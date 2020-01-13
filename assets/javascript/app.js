@@ -14,22 +14,32 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            // $("#games-view").text(JSON.stringify(response));
-            //console log the data to see the results
+            // assign the response object data to the results variable
             var results = response.data;
+            // console log the data to see the results
             console.log(response);
 
             for (var i = 0; i < results.length; i++) {
-                //create a new div for 
+                // create a new div for the gif
                 var gifDiv = $("<div>");
+                // creates a p tag for the rating
                 var p = $("<p>").text("Rating = " + results[i].rating);
+                // creates an image tag for the gif
                 var gameGif = $("<img>").attr("src", results[i].images.fixed_height.url);
-                // gameGif.addClass("gif");
-                // gameGif.attr("data-still")
+                // adds the gif class to the image
+                gameGif.addClass("gif");
+                // adds a data-still and data-animate attribute for later
+                gameGif.attr("data-still", results[i].images.fixed_height_still.url);
+                gameGif.attr("data-animate", results[i].images.fixed_height.url);
+                gameGif.attr("data-state", "animate");
+                // adds the p tag to the gifDiv
                 gifDiv.append(p);
+                // adds the image to the gifDiv
                 gifDiv.append(gameGif);
+                // adds the whole gifDiv to the html page
                 $("#games-view").prepend(gifDiv);
             };
+
 
 
         });
@@ -75,10 +85,17 @@ $(document).ready(function () {
         }
     });
 
-    // Function for displaying the game info
+    // Function for displaying the game info once a js created button is clicked
     $(document).on("click", ".game", displayGameInfo);
-
     // Calling the renderButtons function to display the initial buttons
     buttonCreate();
+
+    $(document).on("click", ".gif", stateSwitch);
+
+    function stateSwitch() {
+        var currentState = $(this).attr("data-state");
+        console.log(currentState);
+
+    };
 
 })
