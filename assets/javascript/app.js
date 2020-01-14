@@ -87,17 +87,19 @@ $(document).ready(function () {
         }
     });
 
-    // Function for displaying the game info once a js created button is clicked
+    //! Function for displaying the game info once a js created button is clicked
     $(document).on("click", ".game", displayGameInfo);
-    // Calling the renderButtons function to display the initial buttons
     buttonCreate();
 
     $(document).on("click", ".gif", stateSwitch);
 
+    // !function to switch state for each gif
     function stateSwitch() {
+        //create a variable to hold the current state
         var currentState = $(this).attr("data-state");
         console.log(currentState);
 
+        //checks the current state and switches it
         if (currentState == "animate") {
             var stillVal = $(this).attr("data-still");
             $(this).attr("src", stillVal);
@@ -109,5 +111,11 @@ $(document).ready(function () {
         }
 
     };
+
+    $("#clear").click(function () {
+        $("#games-view").empty();
+    });
+
+
 
 })

@@ -42,6 +42,17 @@ h1 {
 #add-game {
     margin: 20px;
     padding: 8px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #f44336;
+    font-family: 'IM Fell Great Primer SC', serif;
+    font-size: 18px;
+}
+
+#clear {
+    margin: 20px;
+    padding: 8px;
     font-size: 15px;
     cursor: pointer;
     background-color: white;
@@ -49,7 +60,6 @@ h1 {
     border: 2px solid #f44336;
     font-family: 'IM Fell Great Primer SC', serif;
     font-size: 18px;
-
 
 }
 
