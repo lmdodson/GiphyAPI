@@ -44,12 +44,13 @@ $(document).ready(function () {
 
         });
     }
-    var topics = ["Tomb Raider", "Call of Duty", "Destiny", "Mortal Kombat"];
+    var topics = ["Overwatch", "Tomb Raider", "Call of Duty", "Destiny", "Mortal Kombat"];
 
     //! Function for displaying button data
     function buttonCreate() {
         // Delete previous buttons to avoid duplicates
         $("#buttons-view").empty();
+        $("#game-input").val("");
 
         // Looping through the array of games
         for (var i = 0; i < topics.length; i++) {
@@ -64,6 +65,7 @@ $(document).ready(function () {
             a.text(topics[i]);
             // Adding the button to the buttons-view div
             $("#buttons-view").append(a);
+
         }
     }
 
@@ -95,6 +97,16 @@ $(document).ready(function () {
     function stateSwitch() {
         var currentState = $(this).attr("data-state");
         console.log(currentState);
+
+        if (currentState == "animate") {
+            var stillVal = $(this).attr("data-still");
+            $(this).attr("src", stillVal);
+            $(this).attr("data-state", "still")
+        } else {
+            var animateVal = $(this).attr("data-animate");
+            $(this).attr("src", animateVal);
+            $(this).attr("data-state", "animate");
+        }
 
     };
 
