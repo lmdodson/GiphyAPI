@@ -6,8 +6,8 @@ $(document).ready(function () {
         var key = "BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9"
         //grabs the data-name from the button pushed(this) to use in queryURL
         var game = $(this).attr("data-name");
-        //queryURL built from provided parameters and limited to 10
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&apikey=" + key + "&limit=10";
+        //queryURL built from provided parameters and limited to 10(with offset of 10 so I can see new gifs)
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + game + "&apikey=" + key + "&limit=10" + "&offset=10";
 
         //ajax call sent to giphy server to pull requested info
         $.ajax({
